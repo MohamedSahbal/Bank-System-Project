@@ -1,0 +1,81 @@
+#include <stdio.h>
+
+float balance = 10000;
+int anotherTransaction,amountToWidthdraw,amountToDeposit,pin ,choice;
+void transaction(){
+    printf("\n Menu\n");
+  printf("1. Withdraw\n");
+  printf("2. Deposit\n");
+  printf("3. check Balance\n");
+    printf("4. Exit\n");
+printf("Enter your option:");
+scanf("%d",&choice);
+  switch(choice){
+    case 1:
+    printf("Please enter amount to withdraw: ");
+    scanf("%d", &amountToWidthdraw);
+    if(amountToWidthdraw > balance){
+      printf("There is not enough money in your account");
+      printf("\n\nDo you want another transaction?\nPress 1 to proceed and 2 to exit\n\n");
+      scanf("%d", &anotherTransaction);
+      if(anotherTransaction == 1){
+        transaction();
+      }
+    } else {
+      balance = balance - amountToWidthdraw;
+      printf("\n You can now collect the cash\n");
+      printf("You have withdrawn %d and your new balance is %f ", amountToWidthdraw, balance);
+      printf("\n\nDo you want another transaction?\nPress 1 to proceed and 2 to exit\n");
+      scanf("%d", &anotherTransaction);
+      if(anotherTransaction == 1){
+        transaction();
+      }
+    }
+    break;
+
+    case 2:
+
+    printf("Please enter amount to Deposit: ");
+    scanf("%d", &amountToDeposit);
+
+    balance = amountToDeposit + balance;
+
+    printf("Thank you for depositing, new balance is: %f", balance);
+
+      printf("\nDo you want another transaction?\nPress 1 to proceed and 2 to exit\n");
+      scanf("%d", &anotherTransaction);
+      if(anotherTransaction == 1){
+        transaction();
+      }
+
+    break;
+
+    case 3:
+
+    printf("Your balance is: %f", balance);
+
+      printf("\nDo you want another transaction?\nPress 1 to proceed and 2 to exit\n");
+      scanf("%d", &anotherTransaction);
+      if(anotherTransaction == 1){
+        transaction();
+      }
+
+    break;
+    case 4:
+printf("\n thank you for Using ATM services!");
+break;
+  }
+}
+
+int main(){
+    printf("Welcome to ATM Service\n");
+        while (pin != 2022){
+printf("Type your secret pin number:");
+scanf("%d", &pin);
+if (pin != 2022)
+printf("Please enter your valid password \n");
+    }
+
+  transaction();
+
+  return 0;
